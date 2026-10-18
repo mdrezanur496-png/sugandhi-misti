@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>সুগন্ধি মিষ্টি — ডেমো</title>
+  <meta name="description" content="ঘরে বসেই অর্ডার করুন প্রিয় মিষ্টি — সুগন্ধি মিষ্টি (ডেমো)"/>
+
+  <style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fffaf3;
+  color: #39251d;
+}
+
+header {
+  background: linear-gradient(135deg, #7d1d36, #d77b45);
+  color: white;
+  text-align: center;
+  padding: 25px 12px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+header p {
+  margin: 0;
+}
+
+nav {
+  background: #511627;
+  padding: 14px 8px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 9px;
+  font-size: 14px;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 15px;
+  background: #fbe7d1;
+}
+
+.hero h2,
+.section-title {
+  color: #8b2340;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #922544;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.container {
+  width: min(1100px, 94%);
+  margin: 25px auto;
+}
+
+.section-title {
+  text-align: center;
+  margin: 32px 0 22px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #f0dfd2;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px #6b352018;
+}
+
+.sweet-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  background: #f3e3d5;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+}
+
+.price {
+  color: #a52745;
+  font-size: 21px;
+  font-weight: bold;
+  margin: 10px 0 15px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  padding: 11px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  background: #922544;
+  color: white;
+}
+
+.btn:hover,
+.hero-btn:hover {
+  background: #68182f;
+}
+
+.edit-btn {
+  width: 100%;
+  margin-top: 8px;
+  background: #eee3d8;
+  color: #442c22;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #ead7c8;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 28px 0;
+}
+
+.panel h2 {
+  color: #8b2340;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 14px 0 6px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #d9c6b9;
+  border-radius: 7px;
+  background: white;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee1d8;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty button {
+  background: #f3e4d8;
+  color: #511627;
+  padding: 7px 11px;
+}
+
+.grand-total {
+  border-top: 1px solid #ead7c8;
+  padding-top: 14px;
+  font-size: 21px;
+  color: #a52745;
+  font-weight: bold;
+}
+
+.notice {
+  background: #fff0ce;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 15px;
+  line-height: 1.7;
+}
+
+.small {
+  font-size: 13px;
+  color: #76645a;
+  line-height: 1.7;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  background: #511627;
+  color: white;
+  text-align: center;
+  padding: 25px 12px;
+  margin-top: 40px;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 27px;
+  }
+
+  nav a {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .sweet-image {
+    height: 135px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 17px;
+  }
+
+  .card button {
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍬 সুগন্ধি মিষ্টি</h1>
+    <p>মিষ্টির স্বাদে থাকুক ভালোবাসার ছোঁয়া</p>
+  </header>
+
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#products">মিষ্টি</a>
+    <a href="#cart">কার্ট</a>
+    <a href="#admin">দাম ও ছবি পরিবর্তন</a>
+    <a href="#checkout">অর্ডার</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>ঘরে বসেই অর্ডার করুন প্রিয় মিষ্টি</h2>
+    <p>সুস্বাদু মিষ্টি পৌঁছে যাবে আপনার ঠিকানায়!</p>
+    <a class="hero-btn" href="#products">মিষ্টি দেখুন</a>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title" id="products">আমাদের মিষ্টি</h2>
+    <div class="products" id="productList" aria-live="polite"></div>
+
+    <section class="panel" id="admin">
+      <h2>🛠️ মিষ্টির নাম, দাম ও ছবি পরিবর্তন</h2>
+
+      <p class="small">ডেমো: পরিবর্তন একই ব্রাউজারে localStorage-এ সংরক্ষিত হবে। এটি নিরাপদ অ্যাডমিন প্যানেল নয়।</p>
+
+      <label for="adminProduct">মিষ্টি নির্বাচন</label>
+      <select id="adminProduct" aria-label="অ্যাডমিন - মিষ্টি নির্বাচন"></select>
+
+      <label for="editName">মিষ্টির নাম</label>
+      <input id="editName" type="text" placeholder="নাম লিখুন">
+
+      <label for="editPrice">দাম (টাকা)</label>
+      <input id="editPrice" type="number" min="0" step="1">
+
+      <label for="editImage">ছবির URL (ঐচ্ছিক)</label>
+      <input id="editImage" type="url" placeholder="https://example.com/sweet.jpg">
+
+      <label for="uploadImage">মোবাইল থেকে ছবি যোগ করো</label>
+      <input id="uploadImage" type="file" accept="image/*">
+
+      <div id="previewWrap" class="small notice hidden">
+        <strong>প্রিভিউ:</strong>
+        <div style="margin-top:8px;"><img id="previewImage" src="" alt="ছবির প্রিভিউ" style="max-width:180px; border-radius:10px; border:1px solid #ead7c8;"></div>
+      </div>
+
+      <button id="saveProduct" class="btn">পরিবর্তন সংরক্ষণ</button>
+    </section>
+
+    <section class="panel" id="cart">
+      <h2>🛒 তোমার শপিং কার্ট</h2>
+      <div id="cartItems">এখনও কোনো মিষ্টি যোগ করা হয়নি।</div>
+
+      <div class="total-row">
+        <span>মিষ্টির মোট দাম</span>
+        <strong id="subtotal">৳০</strong>
+      </div>
+
+      <div class="total-row">
+        <span>কুরিয়ার চার্জ</span>
+        <strong id="delivery">৳০</strong>
+      </div>
+
+      <div class="total-row grand-total">
+        <span>সর্বমোট</span>
+        <strong id="grandTotal">৳০</strong>
+      </div>
+    </section>
+
+    <section class="panel" id="checkout">
+      <h2>📦 অর্ডার ফর্ম</h2>
+
+      <form id="orderForm">
+        <label for="customerName">তোমার নাম *</label>
+        <input id="customerName" required placeholder="সম্পূর্ণ নাম">
+
+        <label for="phone">মোবাইল নম্বর *</label>
+        <input id="phone" type="tel" required pattern="01[3-9][0-9]{8}" placeholder="01XXXXXXXXX">
+
+        <label for="address">সম্পূর্ণ ঠিকানা *</label>
+        <textarea id="address" rows="3" required placeholder="গ্রাম, উপজেলা, জেলা"></textarea>
+
+        <label for="payment">পেমেন্ট পদ্ধতি</label>
+        <select id="payment">
+          <option value="bkash">বিকাশ</option>
+          <option value="cod">ক্যাশ অন ডেলিভারি</option>
+        </select>
+
+        <div id="bkashInfo" class="notice hidden">
+          <strong>বিকাশ পেমেন্ট</strong>
+          <p>দোকানের বিকাশ নম্বর: <span id="bkashNumber">01331825701</span></p>
+          <label for="trxId">Transaction ID</label>
+          <input id="trxId" placeholder="পেমেন্টের TrxID">
+          <p class="small">
+            এটি ম্যানুয়াল পেমেন্টের নমুনা। এখানে এখনো স্বয়ংক্রিয় পেমেন্ট চালু হয়নি।
+          </p>
+        </div>
+
+        <div class="small" style="margin-top:12px;">
+          <strong>নোট:</strong> সাবমিট করলে WhatsApp খুলবে এবং অর্ডার টেক্সট সাজানোভাবে যাবে — শুধুমাত্র ডেমো।
+        </div>
+
+        <button class="btn" type="submit" style="margin-top:12px;">WhatsApp-এ অর্ডার পাঠাও</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <h3>🍬 সুগন্ধি মিষ্টি</h3>
+    <p>মিষ্টি হোক প্রতিটি আনন্দের সঙ্গী</p>
+    <p>ফোন: 01331825701</p>
+  </footer>
+
+  <script>
+"use strict";
+
+const WHATSAPP_NUMBER = "01331825701";
+const BKASH_NUMBER = "01331825701";
+const COURIER_CHARGE = 150;
+
+const defaultProducts = [
+  { id: 1, name: "রসকদম", price: 40, image: "" },
+  { id: 2, name: "পাতা প্যাড়া", price: 35, image: "" },
+  { id: 3, name: "পোস্তকদম", price: 40, image: "" },
+  { id: 4, name: "লবঙ্গ লতিকা", price: 30, image: "" },
+  { id: 5, name: "মতিচুর লাড্ডু", price: 25, image: "" },
+  { id: 6, name: "আদি চমচম", price: 45, image: "" }
+];
+
+function loadProducts() {
+  try {
+    const saved = localStorage.getItem("sugondhi_products");
+    if (!saved) return defaultProducts.map(p => ({ ...p }));
+    const data = JSON.parse(saved);
+    if (!Array.isArray(data) || data.length !== defaultProducts.length || !data.every(p => Number.isInteger(p.id) && typeof p.name === "string" && Number.isFinite(p.price) && p.price >= 0 && typeof p.image === "string")) {
+      return defaultProducts.map(p => ({ ...p }));
+    }
+    return data;
+  } catch {
+    return defaultProducts.map(p => ({ ...p }));
+  }
+}
+
+let products = loadProducts();
+let cart = {};
+
+const $ = id => document.getElementById(id);
+const money = n => "৳" + Number(n).toLocaleString("bn-BD");
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>\"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function imageFor(product) {
+  if (product.image) return product.image;
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width="400" height="250">
+      <rect width="100%" height="100%" fill="#f4dfc9"/>
+      <text x="50%" y="45%" text-anchor="middle"
+        font-size="55">🍬</text>
+      <text x="50%" y="75%" text-anchor="middle"
+        font-size="22" fill="#76233a">${escapeHTML(product.name)}</text>
+    </svg>`;
+
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+function renderProducts() {
+  $("productList").innerHTML = products.map(p => `
+    <article class="card">
+      <img class="sweet-image"
+        src="${escapeHTML(imageFor(p))}"
+        alt="${escapeHTML(p.name)}"
+        onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23f4dfc9%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22%3Eছবি নেই%3C/text%3E%3C/svg%3E'">
+      <div class="card-content">
+        <h3>${escapeHTML(p.name)}</h3>
+        <div class="price">${money(p.price)}</div>
+        <button class="btn" onclick="addToCart(${p.id})">কার্টে যোগ করো</button>
+        <button class="edit-btn" onclick="selectProduct(${p.id})">দাম/ছবি পরিবর্তন</button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderAdminOptions() {
+  $("adminProduct").innerHTML = products.map(p => `<option value="${p.id}">${escapeHTML(p.name)}</option>`).join("");
+  selectProduct(products[0].id);
+}
+
+function selectProduct(id) {
+  const p = products.find(item => item.id === Number(id));
+  if (!p) return;
+
+  $("adminProduct").value = p.id;
+  $("editName").value = p.name;
+  $("editPrice").value = p.price;
+  $("editImage").value = p.image && !p.image.startsWith("data:") ? p.image : "";
+  $("uploadImage").value = "";
+
+  if (p.image) {
+    $("previewImage").src = p.image;
+    $("previewWrap").classList.remove("hidden");
+  } else {
+    $("previewImage").src = "";
+    $("previewWrap").classList.add("hidden");
+  }
+
+  $("admin").scrollIntoView({ behavior: "smooth" });
+}
+
+$("adminProduct").addEventListener("change", e => selectProduct(e.target.value));
+$("saveProduct").addEventListener("click", saveProduct);
+
+function saveProduct() {
+  const id = Number($("adminProduct").value);
+  const p = products.find(item => item.id === id);
+  const name = $("editName").value.trim();
+  const price = Number($("editPrice").value);
+  const imageURL = $("editImage").value.trim();
+  const file = $("uploadImage").files[0];
+
+  if (!p || !name || !Number.isFinite(price) || price < 0) {
+    alert("সঠিক নাম ও দাম লিখুন।");
+    return;
+  }
+
+  if (imageURL && !/^https?:\/\/\S+$/i.test(imageURL)) {
+    alert("ছবির সঠিক https:// অথবা http:// URL দিন।");
+    return;
+  }
+
+  if (file && !file.type.startsWith("image/")) {
+    alert("ছবির ফাইল নির্বাচন করুন।");
+    return;
+  }
+
+  if (file && file.size > 700000) {
+    alert("ছবিটি ৭০০ KB-এর চেয়ে ছোট করুন।");
+    return;
+  }
+
+  p.name = name;
+  p.price = price;
+  p.image = imageURL;
+
+  function finishSave() {
+    try {
+      localStorage.setItem("sugondhi_products", JSON.stringify(products));
+      renderProducts();
+      renderAdminOptions();
+      renderCart();
+      alert("পণ্যের তথ্য সংরক্ষণ হয়েছে!");
+    } catch {
+      alert("ছবি বা তথ্য সংরক্ষণ করা যায়নি। ছোট ছবি ব্যবহার করুন।");
+    }
+  }
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      p.image = reader.result;
+      finishSave();
+    };
+    reader.onerror = () => {
+      alert("ছবি পড়া যায়নি। আবার চেষ্টা করুন।");
+    };
+    reader.readAsDataURL(file);
+  } else {
+    finishSave();
+  }
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  $("cart").scrollIntoView({ behavior: "smooth" });
+}
+
+function changeQty(id, amount) {
+  cart[id] = (cart[id] || 0) + amount;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+
+function getCartEntries() {
+  return Object.entries(cart).filter(([id, qty]) => products.some(p => p.id === Number(id)) && qty > 0);
+}
+
+function getSubtotal() {
+  return getCartEntries().reduce((sum, [id, qty]) => {
+    const p = products.find(item => item.id === Number(id));
+    return sum + p.price * qty;
+  }, 0);
+}
+
+function renderCart() {
+  const entries = getCartEntries();
+
+  if (!entries.length) {
+    $("cartItems").textContent = "এখনও কোনো মিষ্টি যোগ করা হয়নি।";
+  } else {
+    $("cartItems").innerHTML = entries.map(([id, qty]) => {
+      const p = products.find(item => item.id === Number(id));
+      return `
+        <div class="cart-row">
+          <div>
+            <strong>${escapeHTML(p.name)}</strong><br>
+            ${money(p.price)} × ${qty} = ${money(p.price * qty)}
+          </div>
+          <div class="qty">
+            <button type="button" onclick="changeQty(${id},-1)">−</button>
+            <strong>${qty}</strong>
+            <button type="button" onclick="changeQty(${id},1)">+</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  const subtotal = getSubtotal();
+  const delivery = subtotal > 0 ? COURIER_CHARGE : 0;
+  $("subtotal").textContent = money(subtotal);
+  $("delivery").textContent = money(delivery);
+  $("grandTotal").textContent = money(subtotal + delivery);
+  $("bkashNumber").textContent = BKASH_NUMBER;
+}
+
+$("payment").addEventListener("change", () => {
+  const isBkash = $("payment").value === "bkash";
+  $("bkashInfo").classList.toggle("hidden", !isBkash);
+  $("trxId").required = false;
+});
+
+$("orderForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const entries = getCartEntries();
+  if (!entries.length) {
+    alert("প্রথমে কার্টে মিষ্টি যোগ করুন।");
+    return;
+  }
+
+  if (!/^8801[3-9]\d{8}$/.test(WHATSAPP_NUMBER)) {
+    alert("JS কোডে WHATSAPP_NUMBER-এর জায়গায় সঠিক নম্বর বসাও।");
+    return;
+  }
+
+  const name = $("customerName").value.trim();
+  const phone = $("phone").value.trim();
+  const address = $("address").value.trim();
+  const payment = $("payment").value;
+  const trxId = $("trxId").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("নাম, ফোন ও ঠিকানা পূরণ করুন।");
+    return;
+  }
+
+  const subtotal = getSubtotal();
+  const total = subtotal + COURIER_CHARGE;
+
+  const itemLines = entries.map(([id, qty]) => {
+    const p = products.find(item => item.id === Number(id));
+    return `• ${p.name} × ${qty} = ${p.price * qty} টাকা`;
+  }).join("\n");
+
+  const message = `
+🍬 সুগন্ধি মিষ্টি - নতুন অর্ডার
+
+নাম: ${name}
+ফোন: ${phone}
+ঠিকানা: ${address}
+
+অর্ডার:
+${itemLines}
+
+মিষ্টির দাম: ${subtotal} টাকা
+কুরিয়ার চার্জ: ${COURIER_CHARGE} টাকা
+মোট বিল: ${total} টাকা
+
+পেমেন্ট: ${payment === "bkash" ? "বিকাশ" : "ক্যাশ অন ডেলিভারি"}
+Transaction ID: ${trxId || "দেওয়া হয়নি"}
+
+দয়া করে অর্ডারটি নিশ্চিত করুন।
+`.trim();
+
+  const waPhone = WHATSAPP_NUMBER.replace(/^0/, "88");
+  const url = "https://wa.me/" + waPhone + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+});
+
+renderProducts();
+renderAdminOptions();
+renderCart();
+  </script>
+</body>
+</html>
